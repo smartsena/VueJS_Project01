@@ -1,6 +1,12 @@
 <template>
-  <!-- <HeaderProject /> -->
-  <HeaderProject> </HeaderProject>
+  <HeaderProject v-if="showflag"/>
+  <HeaderProject v-show="showflag"> </HeaderProject>
+  <div v-show="showName">
+    <b>Usuário: </b>{{firstName + " " + lastName}}
+  </div>
+  <div v-if="accessLevel === 'admin'"> Conectado como Admin</div>
+  <div v-else-if="accessLevel === 'logado'"> Usuário logado</div>
+  <div v-else> Login não efetuado</div>
   <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
@@ -14,7 +20,16 @@ export default {
   components: {
     HeaderProject,
     HelloWorld,
-  }
+  },
+  data() {
+    return{
+      showflag: true,
+      firstName: 'Ziralda',
+      lastName: 'Lafayette',
+      showName: true,
+      accessLevel: 'admin' //'logado' 'naoLogado'
+    }
+  },
 }
 </script>
 
