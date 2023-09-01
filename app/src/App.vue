@@ -1,9 +1,10 @@
 <template>
-  <HeaderProject v-if="showflag"/>
+  <!-- <HeaderProject v-if="showflag"/> -->
   <HeaderProject v-show="showflag"> </HeaderProject>
   <div v-show="showName">
     <b>Usuário: </b>{{firstName + " " + lastName}}
   </div>
+  <DisplayUsers />
   <div v-if="accessLevel === 'admin'"> Conectado como Admin</div>
   <div v-else-if="accessLevel === 'logado'"> Usuário logado</div>
   <div v-else> Login não efetuado</div>
@@ -14,12 +15,14 @@
 <script>
 import HeaderProject from './components/HeaderProject.vue';
 import HelloWorld from './components/HelloWorld.vue';
+import DisplayUsers from './components/DisplayUsers.vue';
 
 export default {
   name: 'App',
   components: {
     HeaderProject,
     HelloWorld,
+    DisplayUsers,
   },
   data() {
     return{
